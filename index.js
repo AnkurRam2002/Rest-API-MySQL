@@ -1,19 +1,16 @@
 import express from 'express';
+import appRouter from './routes/index.js';
 
 const app = express();
+
+app.use(express.json());
+
+app.use('/api/v1/products', appRouter)
 
 const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => {
     console.log('Server is running on http://localhost:6000');
 });
 
-app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send(req.method + ' request received');
-});
 
-app.post('/', (req, res) => {
-    res.send(req.method + ' request received');
-    console.log(req.body);
-});
