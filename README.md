@@ -16,3 +16,8 @@ This project is a RESTful API built using Node.js and Express.js, with MySQL as 
 - Docker: Containerization platform used to run [MySQL](https://hub.docker.com/_/mysql) in isolated environments. 
 - npm: Package manager for Node.js used for installing dependencies and managing scripts.
 - dotenv: Module used for loading environment variables from a .env file.
+
+<br>
+
+![Docker Page](Docker-mysql-exec.png)
+<h3 align='center'>Initialized mysql table inside Docker</h3>
