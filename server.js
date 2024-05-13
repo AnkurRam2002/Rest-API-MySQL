@@ -1,5 +1,5 @@
 import express from 'express';
-import appRouter from './routes/index.js';
+import appRouter from './routes/routes.js';
 import { connectToDatabase } from './db/index.js';
 
 const app = express();

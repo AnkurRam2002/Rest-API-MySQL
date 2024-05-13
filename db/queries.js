@@ -13,11 +13,50 @@ export const find = async () => {
     }   
 };
 
-export const findById = async () => {
+export const findById = async (id) => {
     const QUERY = 'SELECT * FROM products WHERE id = ?';
     try {
         const client = await pool.getConnection();
-        const result = await client.query(QUERY[id]);
+        const result = await client.query(QUERY, [id]);
+        console.log('Result: ', result);
+        return result[0];
+    } catch (error) {
+        console.log('Error executing query: ', error);
+        throw error;
+    }   
+};
+
+export const create = async (title, description, price) => {
+    const QUERY = `INSERT INTO products (title, description, price) VALUES (?, ?, ?)`;
+    try {
+        const client = await pool.getConnection();
+        const result = await client.query(QUERY, [title, description, price]);
+        console.log('Result: ', result);
+        return result;
+    } catch (error) {
+        console.log('Error executing query: ', error);
+        throw error;
+    }   
+};
+
+export const update = async (title, description, price, id) => {
+    const QUERY = `UPDATE products SET title = ?, description = ?, price = ? WHERE id = ?`;
+    try {
+        const client = await pool.getConnection();
+        const result = await client.query(QUERY, [title, description, price, id]);
+        console.log('Result: ', result);
+        return result;
+    } catch (error) {
+        console.log('Error executing query: ', error);
+        throw error;
+    }   
+};
+
+export const remove = async (id) => {
+    const QUERY = `DELETE FROM products WHERE id = ?`;
+    try {
+        const client = await pool.getConnection();
+        const result = await client.query(QUERY, [id]);
         console.log('Result: ', result);
         return result;
     } catch (error) {
